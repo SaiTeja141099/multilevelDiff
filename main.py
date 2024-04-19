@@ -149,10 +149,10 @@ def training(seed, model, args,out_file=None):
     plt.savefig(("%s-mnist_loss.png") % (out_file))
 
     # plot eps loss
-    plt.figure()
-    plt.plot(mmd_list) 
-    plt.title("mmd metric over epochs")
-    plt.savefig(("%s-mnist_mmd.png") % (out_file))
+    # plt.figure()
+    # plt.plot(mmd_list) 
+    # plt.title("mmd metric over epochs")
+    # plt.savefig(("%s-mnist_mmd.png") % (out_file))
  
     return rev_sde, history, loss_list, mmd_list
 
