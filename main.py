@@ -155,7 +155,7 @@ def training(seed, model, args,out_file=None):
     # plt.title("mmd metric over epochs")
     # plt.savefig(("%s-mnist_mmd.png") % (out_file))
  
-    return rev_sde, history, loss_list, mmd_list
+    return rev_sde, history, loss_list
 
 
 def choose_prior(string):
@@ -248,7 +248,7 @@ if __name__ == '__main__':
     for arg, value in vars(args).items():
         logger.info("%s: %s", arg, value)
 
-    rev_sde, history,loss_list,mmd_list = training(args.seed, model, args,out_file=out_file)
+    rev_sde, history,loss_list = training(args.seed, model, args,out_file=out_file)
 
 
 
