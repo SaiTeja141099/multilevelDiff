@@ -147,6 +147,7 @@ def training(seed, model, args,out_file=None):
     plt.plot(loss_list) 
     plt.title("training loss over epochs")
     plt.savefig(("%s-mnist_loss.png") % (out_file))
+    torch.save(rev_sde, 'post_epoch_checkpoint.pt')
 
     # plot eps loss
     # plt.figure()
