@@ -99,21 +99,23 @@ def training(seed, model, args,out_file=None):
             y0 = torch.clamp(y0,0.,1.).to('cpu')
             y02 = torch.clamp(y02,0.,1.).to('cpu')
             
-            riesz_mmd = mmd(y0, val_samp_pool)
-            riesz2_mmd = mmd(y02, val_samp)
+            # riesz_mmd = mmd(y0, val_samp_pool)
+            # riesz2_mmd = mmd(y02, val_samp)
             
-            history.append([ep,avg_loss,riesz_mmd,riesz2_mmd]) 
+            # history.append([ep,avg_loss,riesz_mmd,riesz2_mmd])
+            history.append([ep,avg_loss])
             loss_list.append(avg_loss)
-            mmd_list.append(riesz_mmd)
-            mmd2_list.append(riesz2_mmd)
+            # mmd_list.append(riesz_mmd)
+            # mmd2_list.append(riesz2_mmd)
 
-            print(riesz_mmd)
-            logger.info('epoch:%05d\t loss:%1.2e \t mmd:%1.2e \t mmdhigh:%1.2e ' % (ep, avg_loss, riesz_mmd, riesz2_mmd))#, eps, epshigh \t eps:%1.2e \t epshigh:%1.2e
+            # print(riesz_mmd)
+            logger.info('epoch:%05d\t loss:%1.2e' % (ep, avg_loss))
+            # logger.info('epoch:%05d\t loss:%1.2e \t mmd:%1.2e \t mmdhigh:%1.2e ' % (ep, avg_loss, riesz_mmd, riesz2_mmd))#, eps, epshigh \t eps:%1.2e \t epshigh:%1.2e
 
-            if riesz2_mmd < min_mmd:
-                torch.save(rev_sde, ("%s-min_checkpoint.pt") % (out_file))
-                min_mmd = riesz2_mmd
-                min_mmd_epoch = ep
+            # if riesz2_mmd < min_mmd:
+            #     torch.save(rev_sde, ("%s-min_checkpoint.pt") % (out_file))
+            #     min_mmd = riesz2_mmd
+            #     min_mmd_epoch = ep
 
         #visualization
         if ep % args.viz_freq==0:
